@@ -5,6 +5,8 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,8 +28,13 @@ Route::get('/mahasiswa/{param1}', [MahasiswaController::class, 'show']);
 Route::get('/about', function () {
     return view('halaman-about');
 });
-route::get('/home',[HomeController::class,'index']);
+route::get('/home',[HomeController::class,'index'])->name('home');
 route::get('/pegawai',[PegawaiController::class,'index']);
 
 Route::post('question/store', [QuestionController::class, 'store'])
 		->name('question.store');
+
+route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+
+
+

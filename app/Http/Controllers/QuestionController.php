@@ -11,7 +11,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -27,7 +27,20 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all()) ;
+
+        $request->validate([
+            'nama'  => 'required|max:10',
+            'email' => ['required', 'email'],
+            'pertanyaan' => 'required|max:300|min:8',
+        ]);
+
+        $data['nama'] = $request->nama;
+        $data['email'] = $request->email;
+        $data['pertanyaan'] = $request->pertanyaan;
+
+        // return view('home-question-respon', $data);
+        return redirect()->route('home')->with('info', 'Terimakasih Atas Pertanyaannya ' . $data['nama'] . ' Silahkan Check Email Anda Di ' . $data['email'] );
+        // return redirect()->route('berhasil');
     }
 
     /**

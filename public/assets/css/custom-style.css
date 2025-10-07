@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'RegularFont';
+    src: url('assets/fonts/Volkorn-Regular.ttf');
+}
+
+.font-custom{
+    font-family: 'RegularFont';
+}

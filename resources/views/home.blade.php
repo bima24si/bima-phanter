@@ -8,6 +8,7 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-style.css') }}">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -83,7 +84,7 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1> {{ $username }} </h1>
+            <h1 class="font-custom"> {{ $username }} </h1>
             <p> {{ $last_login }} </p>
             <p class="lead mb-0">A simple and elegant app using Bootstrap 5 and Laravel Blade.</p>
         </div>
@@ -157,12 +158,33 @@
                         </p>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-body">
+                        <img src="{{ asset('assets/images/logo.jpg') }}" alt="Logo" width="250px" height="250px">
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Form Pertanyaan</h5>
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        @if (session('info'))
+                            <div class="alert alert-info">
+                                {!! session('info') !!}
+                            </div>
+                        @endif
 
                         <form action="{{ route('question.store') }}" method="POST">
                             @csrf
@@ -178,7 +200,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                                    <textarea class="form-control" rows="4" nama="pertanyaan"></textarea>
+                                    <textarea class="form-control" rows="4" name="pertanyaan"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
                             </form>
