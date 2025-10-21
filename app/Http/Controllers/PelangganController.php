@@ -59,7 +59,7 @@ $pesan = [
 
     Pelanggan::create($data);
 
-    return redirect()->route('pelanggan.index')->with('success', 'Penambahan Data Berhasil!');
+    return redirect()->route('admin.pelanggan.index')->with('success', 'Penambahan Data Berhasil!');
 }
 
 
