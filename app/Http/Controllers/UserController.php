@@ -42,17 +42,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $data['dataUser'] = User::findOrFail($id);
+        return view('user.edit', $data);
     }
 
     /**
@@ -60,7 +53,15 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $id = $id;
+        $user    = User::findOrFail($id);
+
+        $user->first_name = $request->name;
+        $user->email      = $request->email;
+        $user->phone      = $request->password;
+
+        $user->save();
+        return redirect()->route('user.index')->with('success', 'Perubahan Data Berhasil!');
     }
 
     /**
@@ -68,6 +69,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user    = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('user.index')->with('success', 'Data Berhasil Dihapus');
     }
 }

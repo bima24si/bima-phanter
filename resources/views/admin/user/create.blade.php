@@ -49,14 +49,14 @@
                                     <!-- nama lengkap -->
                                     <div class="mb-3">
                                         <label for="name" class="form-label">name</label>
-                                        <input type="text" id="first_name" class="form-control" name="first_name"
+                                        <input type="text" id="name" class="form-control" name="name"
                                             value="{{ old('phone') }}">
                                     </div>
 
                                     <!-- email -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label">email</label>
-                                        <input type="text" id="last_name" class="form-control" name="last_name"
+                                        <input type="text" id="email" class="form-control" name="email"
                                             value="{{ old('phone') }}">
                                     </div>
                                 </div>
