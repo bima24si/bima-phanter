@@ -11,7 +11,7 @@ use App\Http\Controllers\PelangganController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.pelanggan.index');
 });
 Route::get('/pcr', function () {
     return 'Selamat Datang di Website Kampus PCR!';
